@@ -10,7 +10,7 @@
         },
         {
             "src": "client-api/public/index.php",
-            "use": "@vercel/php"
+            "use": "vercel-php"
         }
     ],
     "routes": [
