@@ -1,15 +1,11 @@
 {
-    "version": 2,
-    "builds": [
+    "buildCommand": "cd clientapi && npm install && npm run build",
+    "outputDirectory": "clientapi/build",
+    "framework": "create-react-app",
+    "rewrites": [
         {
-            "src": "clientapi/package.json",
-            "use": "@vercel/static-build"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/clientapi/$1"
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }
