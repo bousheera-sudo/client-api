@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+const isProduction = window.location.hostname !== 'localhost';
+const defaultApiUrl = isProduction
+    ? `${window.location.origin}/api`
+    : 'http://localhost:8000/api';
+
+const apiUrl = process.env.REACT_APP_API_URL || defaultApiUrl;
 
 export default function Apiclient() {
     const [query, setQuery] = useState('');

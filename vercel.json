@@ -1,11 +1,46 @@
 {
-    "buildCommand": "cd clientapi && npm install && npm run build",
-    "outputDirectory": "clientapi/build",
-    "framework": "create-react-app",
-    "rewrites": [
+    "version": 2,
+    "builds": [
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "src": "clientapi/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        },
+        {
+            "src": "client-api/public/index.php",
+            "use": "@vercel/php"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "client-api/public/index.php"
+        },
+        {
+            "src": "/static/(.*)",
+            "dest": "clientapi/static/$1"
+        },
+        {
+            "src": "/manifest.json",
+            "dest": "clientapi/manifest.json"
+        },
+        {
+            "src": "/logo192.png",
+            "dest": "clientapi/logo192.png"
+        },
+        {
+            "src": "/favicon.ico",
+            "dest": "clientapi/favicon.ico"
+        },
+        {
+            "src": "/asset-manifest.json",
+            "dest": "clientapi/asset-manifest.json"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "clientapi/index.html"
         }
     ]
 }

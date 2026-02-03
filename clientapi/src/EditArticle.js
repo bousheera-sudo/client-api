@@ -14,7 +14,12 @@ export default function EditArticle() {
             return;
         }
 
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+        const isProduction = window.location.hostname !== 'localhost';
+        const defaultApiUrl = isProduction
+            ? `${window.location.origin}/api`
+            : 'http://localhost:8000/api';
+
+        const apiUrl = process.env.REACT_APP_API_URL || defaultApiUrl;
         axios.put(`${apiUrl}/articles/${id}`, {
             titre,
             categorie,
