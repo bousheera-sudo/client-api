@@ -42,5 +42,8 @@
             "src": "/(.*)",
             "dest": "clientapi/index.html"
         }
-    ]
+    ],
+    "env": {
+        "REDEPLOY": "true"
+    }
 }
