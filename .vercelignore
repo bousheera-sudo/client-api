@@ -1,0 +1,18 @@
+# Exclude frontend from backend build
+clientapi/
+clientapi/node_modules/
+clientapi/build/
+
+# Exclude backend from frontend build (though static build usually only takes what it needs)
+client-api/tests/
+client-api/storage/logs/
+client-api/storage/framework/cache/
+client-api/storage/framework/sessions/
+client-api/storage/framework/views/
+
+# General
+.git/
+.env
+.env.local
+node_modules/
+vendor/
